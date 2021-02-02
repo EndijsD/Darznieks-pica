@@ -1,10 +1,22 @@
 import javax.swing.JOptionPane;
 
 public class pica {
-
+static boolean info = false;
+static String vards, uzvards, numurs, adrese;
 	
 	static void informācija() {
+		vards = JOptionPane.showInputDialog("Ievadi savu vārdu: ");
+		uzvards = JOptionPane.showInputDialog("Ievadi savu uzvārdu: ");
+		numurs = JOptionPane.showInputDialog("Ievadi savu tālruni: ");
+		adrese = JOptionPane.showInputDialog("Ievadi savu adresi: ");
+		info = true;
 		
+		String[] options = {"Jā", "Nē"};
+		int pareizi = JOptionPane.showOptionDialog(null, "Vārds/uzvārds: "+vards+" "+uzvards+"\n"+
+										                 "Tālrunis: "+numurs+"\nAdrese: "+adrese,
+										                 "Vai ievadītā informācija ir pareiza?", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+		if(pareizi == 1)
+			informācija();
 	}
 	static void lielums() {
 		
