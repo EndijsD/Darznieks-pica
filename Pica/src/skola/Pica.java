@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 public class Pica {
 static boolean info = false;
-static String vards, uzvards, numurs, adrese, izvele;
+static String vards, uzvards, numurs, adrese, izvele, iznākumsT;
 static Picērija Picērija = new Picērija();
 static double iznākumsL;
 
@@ -23,12 +23,12 @@ static double iznākumsL;
 	}
 	static void izveidotPicu() {
 		do{
-			izvele = JOptionPane.showInputDialog("1 - Picas lielums | 2 - Picas tips | 3 - Picas virskārtas/piedevas | 0 - Pabeigt picas taisīšanu");
+			izvele = JOptionPane.showInputDialog("1 - Picas tips | 2 - Picas lielums | 3 - Papildus picas virskārtas/piedevas | 0 - Pabeigt picas taisīšanu");
 			
 			switch(izvele.toLowerCase()){
-				case "1": iznākumsL = Picērija.lielums(); break;
+				case "1": iznākumsT = Picērija.tips(); break;
 				
-				case "2": Picērija.tips(); break;
+				case "2": iznākumsL = Picērija.lielums(); break;
 				
 				case "3": Picērija.virskārtas(); break;
 				
