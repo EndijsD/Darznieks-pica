@@ -3,9 +3,9 @@ import javax.swing.JOptionPane;
 
 public class Pica {
 static boolean info = false;
-static String vards, uzvards, numurs, adrese;
-static String izvele;
+static String vards, uzvards, numurs, adrese, izvele;
 static Picērija Picērija = new Picērija();
+static double iznākumsL;
 
 	static void informācija() {
 		vards = JOptionPane.showInputDialog("Ievadi savu vārdu: ");
@@ -17,7 +17,7 @@ static Picērija Picērija = new Picērija();
 		String[] options = {"Jā", "Nē"};
 		int pareizi = JOptionPane.showOptionDialog(null, "Vārds/uzvārds: "+vards+" "+uzvards+"\n"+
 										                 "Tālrunis: "+numurs+"\nAdrese: "+adrese,
-										                 "Vai ievadītā informācija ir pareiza?", 0, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+										                 "Vai ievadītā informācija ir pareiza?", 0, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 		if(pareizi == 1)
 			informācija();
 	}
@@ -26,7 +26,7 @@ static Picērija Picērija = new Picērija();
 			izvele = JOptionPane.showInputDialog("1 - Picas lielums | 2 - Picas tips | 3 - Picas virskārtas/piedevas | 0 - Pabeigt picas taisīšanu");
 			
 			switch(izvele.toLowerCase()){
-				case "1": Picērija.lielums(); break;
+				case "1": iznākumsL = Picērija.lielums(); break;
 				
 				case "2": Picērija.tips(); break;
 				
@@ -53,7 +53,7 @@ static Picērija Picērija = new Picērija();
 				
 				case "3": summa(); break;
 				
-				case "x": JOptionPane.showMessageDialog(null, "Programma tika apturēta!"); break;
+				case "x": JOptionPane.showMessageDialog(null, "Programma tika apturēta!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
 				
 				default: JOptionPane.showMessageDialog(null, "Šāda darbība nepastāv!", "Kļūme!", JOptionPane.ERROR_MESSAGE); break;
 			}
