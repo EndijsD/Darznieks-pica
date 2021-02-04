@@ -1,4 +1,6 @@
 package skola;
+import java.text.DecimalFormat;
+
 import javax.swing.JOptionPane;
 
 public class Pica {
@@ -23,7 +25,8 @@ static double[] iznākumsV;
 			informācija();
 	}
 	static void izveidotPicu() {
-		do{
+		do {
+		do {
 			izvele = JOptionPane.showInputDialog("1 - Picas tips | 2 - Picas lielums | 3 - Papildus picas virskārtas/piedevas | 0 - Pabeigt picas taisīšanu");
 			
 			switch(izvele.toLowerCase()){
@@ -33,14 +36,46 @@ static double[] iznākumsV;
 				
 				case "3": iznākumsV = Picērija.virskārtas(); break;
 				
-				case "0": JOptionPane.showMessageDialog(null, "Pica tika izveidota!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
+				case "0": if(iznākumsT != null && iznākumsL != 0) JOptionPane.showMessageDialog(null, "Pica tika izveidota!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
 				
 				default: JOptionPane.showMessageDialog(null, "Šāda darbība nepastāv!", "Kļūme!", JOptionPane.ERROR_MESSAGE); break;
 			}
+			
 		}while(!izvele.equals("0"));
+		if(iznākumsT == null)
+				JOptionPane.showMessageDialog(null, "Nav izvēlēts picas tips!", "Ziņa", JOptionPane.INFORMATION_MESSAGE);
+		if(iznākumsL == 0)
+			JOptionPane.showMessageDialog(null, "Nav izvēlēts picas lielums!", "Ziņa", JOptionPane.INFORMATION_MESSAGE);
+		}while(iznākumsT == null || iznākumsL == 0);
 	}
 	static void summa() {
+		if(iznākumsT != null && iznākumsL != 0) {
+		double galaSumma = 0, piegade = 0;
+		String[] options = {"Jā", "Nē"};
+		DecimalFormat df = new DecimalFormat("#.##");
 		
+			int n = JOptionPane.showOptionDialog(null, "Vai vēlaties, lai piegādā uz norādīto adresi?\nPiegāde - 9.99€", "Piegāde", 0, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+			
+			if(n == 0)
+				piegade = 9.99;
+		if(iznākumsV != null)
+		for(int i = 0; i < iznākumsV.length; i++)
+			galaSumma = piegade + iznākumsL + iznākumsV[i];
+		else
+			galaSumma = piegade + iznākumsL;
+			
+		String[] options1 = {"Pasūtīt", "Atcelt"};
+		int izvele = JOptionPane.showOptionDialog(null, "Kopsumma euro = "+df.format(galaSumma), "Gala summa", 0, JOptionPane.INFORMATION_MESSAGE, null, options1, options1[0]);
+		
+		switch (izvele) {
+			case 0: 
+				if(info == true) {
+					
+				}else
+					JOptionPane.showMessageDialog(null, "Nav ievadīta kontaktinformācja!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
+		}
+		}else
+			JOptionPane.showMessageDialog(null, "Nav izveidota pica!", "Ziņa", JOptionPane.INFORMATION_MESSAGE);
 	}
 	public static void main(String[] args) {
 		

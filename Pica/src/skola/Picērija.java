@@ -48,7 +48,10 @@ Object iznākumsObjektā;
 		
 		i += 1;
 		}while(ja_ne == 0);
-			
+		
+		if(cena == "")
+			cena = "0";
+		
 		double[] summaV = new double[i];
 		String[] cenas = cena.split(" ");
 		
