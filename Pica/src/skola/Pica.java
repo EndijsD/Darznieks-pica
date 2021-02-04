@@ -6,6 +6,7 @@ static boolean info = false;
 static String vards, uzvards, numurs, adrese, izvele, iznākumsT;
 static Picērija Picērija = new Picērija();
 static double iznākumsL;
+static double[] iznākumsV;
 
 	static void informācija() {
 		vards = JOptionPane.showInputDialog("Ievadi savu vārdu: ");
@@ -30,7 +31,7 @@ static double iznākumsL;
 				
 				case "2": iznākumsL = Picērija.lielums(); break;
 				
-				case "3": Picērija.virskārtas(); break;
+				case "3": iznākumsV = Picērija.virskārtas(); break;
 				
 				case "0": JOptionPane.showMessageDialog(null, "Pica tika izveidota!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
 				

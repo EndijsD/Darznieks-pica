@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 
 public class Picērija {
 Object iznākumsObjektā;
-	
+
 	double lielums() {
 		double summaL = 0;
 		
@@ -24,14 +24,37 @@ Object iznākumsObjektā;
         return summaL;
 	}
 	String tips() {
-		Object[] options = {"Home Alone", "Hawiian", "Pepperoni", "Hungry Man", "Meat Lovers", "Supreme"};
+		Object[] options = {"Home Alone", "Hawaiian", "Pepperoni", "Hungry Man", "Meat Lovers", "Supreme"};
 		
 		iznākumsObjektā = JOptionPane.showInputDialog(null, "Veids:", "Izvēlies picas tipu/veidu", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
         String iznākumsTips = iznākumsObjektā.toString();
         
         return iznākumsTips;
 	}
-	void virskārtas() {
+	double[] virskārtas() {
+		int ja_ne = 0, i = 0;
+		String cena = "";
 		
+		do {
+		Object[] options = {"Nevienu", "Bekons - 4.19€", "Ananāsi - 2.19€", "Šķiņķis - 4.19€", "BBQ mērce - 3.29€", "Siers - 3.89€", "Sēnes - 2.19€", "Ķiploki - 0.36€", "Tomāti - 2.19€", "Sīpoli - 0.49€", "Melnie pipari - 0.33€", "Zaļie lociņi - 0.49€", "Karija mērce - 1.69€"};
+        iznākumsObjektā = JOptionPane.showInputDialog(null, "Piedevas:", "Izvēlies papildus picas virskārtas/piedevas", JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+        String iznākumsVirskārtas = iznākumsObjektā.toString();
+        
+        if(iznākumsVirskārtas != "Nevienu")
+        cena = cena + iznākumsVirskārtas.substring(iznākumsVirskārtas.length()-5, iznākumsVirskārtas.length()-1) + " ";
+        
+        String[] options1 = {"Jā", "Nē"};
+		ja_ne = JOptionPane.showOptionDialog(null, "Vai vēlaties pievienot vēl kādu piedevu?", "Jautājums", 0, JOptionPane.INFORMATION_MESSAGE, null, options1, options1[0]);
+		
+		i += 1;
+		}while(ja_ne == 0);
+			
+		double[] summaV = new double[i];
+		String[] cenas = cena.split(" ");
+		
+		for(int x = 0; x < i; x++)
+			summaV[x] = Double.parseDouble(cenas[x]);
+		
+		return summaV;
 	}
 }
