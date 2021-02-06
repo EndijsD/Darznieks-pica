@@ -5,15 +5,16 @@ import javax.swing.JOptionPane;
 
 public class Pica {
 static boolean info = false;
-static String vards, uzvards, numurs, adrese, izvele, iznākumsT;
+static String vards, uzvards, adrese, izvele, iznākumsT;
+static int numurs;
 static Picērija Picērija = new Picērija();
-static double iznākumsL;
+static double iznākumsL, galaSumma = 0;
 static double[] iznākumsV;
 
 	static void informācija() {
 		vards = JOptionPane.showInputDialog("Ievadi savu vārdu: ");
 		uzvards = JOptionPane.showInputDialog("Ievadi savu uzvārdu: ");
-		numurs = JOptionPane.showInputDialog("Ievadi savu tālruni: ");
+		numurs = Integer.parseInt(JOptionPane.showInputDialog("Ievadi savu tālruni: "));
 		adrese = JOptionPane.showInputDialog("Ievadi savu adresi: ");
 		info = true;
 		
@@ -50,7 +51,7 @@ static double[] iznākumsV;
 	}
 	static void summa() {
 		if(iznākumsT != null && iznākumsL != 0) {
-		double galaSumma = 0, piegade = 0;
+		double piegade = 0, iznākumsVKopā = 0;
 		String[] options = {"Jā", "Nē"};
 		DecimalFormat df = new DecimalFormat("#.##");
 		
@@ -58,29 +59,31 @@ static double[] iznākumsV;
 			
 			if(n == 0)
 				piegade = 9.99;
-		if(iznākumsV != null)
-		for(int i = 0; i < iznākumsV.length; i++)
-			galaSumma = piegade + iznākumsL + iznākumsV[i];
+			
+		if(iznākumsV != null) {
+			for(int i = 0; i < iznākumsV.length; i++) {
+			iznākumsVKopā = iznākumsVKopā + iznākumsV[i];
+		}
+		galaSumma = piegade + iznākumsL + iznākumsVKopā;
+		}
 		else
 			galaSumma = piegade + iznākumsL;
-			
-		String[] options1 = {"Pasūtīt", "Atcelt"};
-		int izvele = JOptionPane.showOptionDialog(null, "Kopsumma euro = "+df.format(galaSumma), "Gala summa", 0, JOptionPane.INFORMATION_MESSAGE, null, options1, options1[0]);
 		
-		switch (izvele) {
-			case 0: 
+		String[] options1 = {"Pasūtīt", "Atcelt"};
+		int izvele = JOptionPane.showOptionDialog(null, "Kopsumma euro = "+df.format(galaSumma)+"€", "Gala summa", 0, JOptionPane.INFORMATION_MESSAGE, null, options1, options1[0]);
+		
+		if(izvele == 0)
 				if(info == true) {
-					
+					Picērija.rakstit();
 				}else
-					JOptionPane.showMessageDialog(null, "Nav ievadīta kontaktinformācja!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
-		}
+					JOptionPane.showMessageDialog(null, "Nav ievadīta kontaktinformācja!", "Ziņa", JOptionPane.INFORMATION_MESSAGE);
 		}else
 			JOptionPane.showMessageDialog(null, "Nav izveidota pica!", "Ziņa", JOptionPane.INFORMATION_MESSAGE);
 	}
 	public static void main(String[] args) {
 		
 		do{
-			izvele = JOptionPane.showInputDialog("1 - Pasūtītāja informācija | 2 - Izveidot picu | 3 - Gala summa | x - Apturēt programmu");
+			izvele = JOptionPane.showInputDialog("1 - Pasūtītāja informācija | 2 - Izveidot picu | 3 - Gala summa | 4 - Veiktie pasūtījumi | x - Apturēt programmu");
 			
 			switch(izvele.toLowerCase()){
 				case "1": informācija(); break;
@@ -88,6 +91,8 @@ static double[] iznākumsV;
 				case "2": izveidotPicu(); break;
 				
 				case "3": summa(); break;
+				
+				case "4": Picērija.nolasit(); break;
 				
 				case "x": JOptionPane.showMessageDialog(null, "Programma tika apturēta!", "Ziņa", JOptionPane.INFORMATION_MESSAGE); break;
 				
