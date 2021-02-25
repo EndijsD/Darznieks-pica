@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Pica {
 static boolean info = false;
-static String vards, uzvards, adrese, izvele, iznākumsT;
+static String vards, uzvards, adrese = "Nav", izvele, iznākumsT;
 static int numurs, atbilde;
 static Picērija Picērija = new Picērija();
 static double iznākumsL, galaSumma = 0, piegade = 0;

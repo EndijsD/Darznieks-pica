@@ -90,9 +90,8 @@ int x = 1;
 			if(piedevas == "")
 				piedevas = "Nav";
 			
-			raksta.println("\t\tPasūtījums - Pica:\nTips: "+iznākumsTips+"\nIzmērs: "+iznākumsLielums+"\nPapildus piedevas: "+piedevas+"\nPiegāde: "+Pica.piegade+"€"+
-						   "\n\t\tGala summa = "+df.format(Pica.galaSumma)+"€\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-			
+			raksta.println("\t\tPasūtījums - Pica:\nTips: "+iznākumsTips+"\nIzmērs: "+iznākumsLielums+"\nPapildus piedevas: "+piedevas+"\nPiegāde: "+Pica.piegade+"€\n\t\tGala summa = "+df.format(Pica.galaSumma)+"€\n"+
+						   "\n\t\tKontaktinformācija\nVārds - "+Pica.vards+"\nUzvards - "+Pica.uzvards+"\nTālrunis - "+Pica.numurs+"\nAdrese - "+Pica.adrese+"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			raksta.close();
 		}catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Kļūda labojot failu!", "Kļūda!", JOptionPane.ERROR_MESSAGE);

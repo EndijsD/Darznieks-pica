@@ -26,8 +26,14 @@ _Metodes atrodas virs **main** daļas un vairākas citas metodes atrodas otrajā
 
 ### Veicamie darbi:
 
-1. Sataisīt esošās kļūdas/problēmas programmā
+1. Sataisīt esošās kļūdas/problēmas programmā   ☑️
 
-2. Paplašināt virskārtu/piedevu klāstu
+2. Izdarīt tā, lai kontaktinformācija būtu redzama pasūtījumu failā ☑️
 
-3. ...
+3. Paplašināt virskārtu/piedevu klāstu
+
+4. Ja pasūtītājs izvēlās izņemt uz vietas, tad, lai pasūtījumu failā uzrāda - Piegāde: Uz vietas - nevis 0.0€
+
+4. Iespēja pasūtīt vairākas picas vienā reizē
+
+5. ...
